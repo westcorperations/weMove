@@ -320,7 +320,7 @@ const prev = () => {
                       ></path>
                     </svg>
                     <p
-                      class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400"
+                      class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400 px-3"
                     >
                       {{ item.rating }}
                     </p>
