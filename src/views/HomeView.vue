@@ -1,4 +1,5 @@
 <script setup>
+import HeaderComponent from '@/components/UserLayout/includes/HeaderComponent.vue';
 import { ref } from "vue";
 import { Carousel, Slide } from "vue3-carousel";
 
@@ -70,7 +71,13 @@ const prev = () => {
 </script>
 
 <template>
+<!-- Banner Component -->
+<HeaderComponent />
+
+
+<!-- Main section -->
   <main class="container my-5 px-6 mx-auto">
+    
     <!-- Section: How To -->
     <section class="mb-10 text-gray-800 text-center lg:text-left">
       <div class="flex justify-center">

@@ -43,6 +43,12 @@
                   <MenuItem v-slot="{ active }">
                     <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
                   </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a href="/login" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Login</a>
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a href="/login" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Signup</a>
+                  </MenuItem>
                 </MenuItems>
               </transition>
             </Menu>
@@ -63,7 +69,7 @@
   import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
   
   const navigation = [
-    { name: 'Book', href: '#', current: true },
+    { name: 'Book', href: '/booking', current: true },
     { name: 'category', href: '#', current: false },
     { name: 'FAQ', href: '#', current: false },
     { name: 'Contact', href: '#', current: false },

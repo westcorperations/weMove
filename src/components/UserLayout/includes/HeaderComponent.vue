@@ -4,7 +4,7 @@
 
 <!-- Section: header -->
 <section class="mb-20">
-<NavBarComponent />
+
  
 
   <div class="relative overflow-hidden bg-no-repeat bg-cover" style="background-position: 50%; background-image: url('https://drive.google.com/uc?export=download&id=17uPLO7CY5ICgbkGwA2UZNXzpc9USXd5F'); height: 500px;">
@@ -62,7 +62,7 @@
         </div>
         
         <div class="py-4 px-2">
-            <button class="bg-primary-100 text-white px-10 py-2 rounded-lg hover:bg-primary-50 ">Book</button>
+            <button class="bg-primary-100 text-white px-10 py-2 rounded-lg hover:bg-primary-50 ">Book Now</button>
         </div>
         </div>
     </div>
@@ -75,7 +75,7 @@
 </template>
 
 <script setup>
-import NavBarComponent from '@/components/UserLayout/includes/NavBarComponent.vue'
+
 
 </script>
 

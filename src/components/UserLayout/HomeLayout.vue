@@ -1,14 +1,17 @@
 <template>
-    <div>
-<HeaderComponent />
+    <div class="bg-gray-100">
+<!-- Navbar component -->
+<NavBarComponent />
+<!-- Views -->
 <router-view />
+<!-- FooterComponent -->
 <FooterComponent />
     </div>
 </template>
 
 <script setup>
 
-import HeaderComponent from '@/components/UserLayout/includes/HeaderComponent.vue'
+import NavBarComponent from '@/components/UserLayout/includes/NavBarComponent.vue'
 import FooterComponent from '@/components/UserLayout/includes/FooterComponent.vue'
 
 </script>
