@@ -1,14 +1,15 @@
 <template>
     <div>
         
-
-        <router-view></router-view>
+<RouterView />
+      
 
     </div>
 </template>
 
 <script setup>
 // import NavBarComponent from '@/components/UserLayout/includes/NavBarComponent.vue'
+import { RouterView } from 'vue-router';
 
 </script>
 
