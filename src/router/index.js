@@ -16,7 +16,7 @@ const router = createRouter({
         {
         path: '/',
         name:'HomeView',
-        component:HomeView
+        component:HomeView,
       },
       {
       path: '/booking',
@@ -27,7 +27,7 @@ const router = createRouter({
   ],
 },
     {
-      path: '/login',
+      path: '/auth',
       redirect: '/login',
       name: 'AuthLayout',
       component: AuthLayout,
