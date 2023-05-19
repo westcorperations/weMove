@@ -395,8 +395,8 @@ const prev = () => {
  
 
 <!-- Section: Newsletter -->
-<section class="mb-32 text-gray-800 text-center lg:text-left ">
-  <div class="block rounded-lg shadow-lg bg-white">
+<section class="mb-[-100px] relative text-gray-800 text-center lg:text-left ">
+  <div class="block rounded-lg shadow-3xl bg-white">
     <div class="flex flex-wrap items-center">
       <div class="grow-0 shrink-0 basis-auto hidden lg:flex lg:w-6/12 xl:w-4/12">
         <img

@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-100">
+    <div class="bg-slate-200">
 <!-- Navbar component -->
 <NavBarComponent />
 <!-- Views -->

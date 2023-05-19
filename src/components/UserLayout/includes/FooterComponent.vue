@@ -1,18 +1,9 @@
 <template>
     <div>
-        <footer class="text-primary-100">
-            <div class="flex flex-col ">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-center md:text- bg-gradient-to-r from-primary-50 to-primary-100 text-white">
-                    <div class="flex flex-col gap-y-2 p-4">
-                        <div class="bg-white  ">
-                            <img src="@/assets/wemove-logo-nobg.png" alt="" class="object-cover">
-                        </div>
-                        <div class="">
-                            <p class="text-sm text-center">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iure.
-                            </p>
-                        </div>
-                    </div>
+        <footer class="text-primary-100 ">
+            <div class="flex flex-col">
+                <div class="grid grid-cols-1 pt-28 pb-10 items-center justify-center md:grid-cols-2 lg:grid-cols-3 text-center md:text- bg-gradient-to-r from-primary-50 to-primary-100 text-white">
+                  
                     <div class="flex flex-col gap-y-2 p-4 justify-center ">
                         <div class="">
                             <h3 class="font-bold text-base">Support</h3>
