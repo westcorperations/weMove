@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "start": "npx http-server -P http://127.0.0.1:${PORT} ./dist",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
@@ -11,10 +12,13 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.13",
     "@heroicons/vue": "^2.0.17",
+    "axios": "^1.4.0",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
-    "vue3-carousel": "^0.3.0"
+    "vue3-carousel": "^0.3.0",
+    "vue3-google-oauth2": "^1.0.7",
+    "vue3-google-signin": "^1.3.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",

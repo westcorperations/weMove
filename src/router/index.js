@@ -28,6 +28,12 @@ const router = createRouter({
       ]
     },
     {
+      path: '/auth/:provider/callback',
+      component: {
+        template: '<div class="auth-component"></div>'
+      }
+    },
+    {
       path: "/auth",
       redirect: "/login",
       name: "AuthLayout",
