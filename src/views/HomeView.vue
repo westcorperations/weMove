@@ -2,6 +2,7 @@
 import HeaderComponent from '@/components/UserLayout/includes/HeaderComponent.vue';
 import { ref } from "vue";
 import { Carousel, Slide } from "vue3-carousel";
+import {useAuthStore} from "@/stores/auth.js";
 
 import "vue3-carousel/dist/carousel.css";
 const TopBuses = [

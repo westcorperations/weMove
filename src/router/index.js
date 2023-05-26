@@ -48,7 +48,7 @@ const router = createRouter({
     },
     
   ],
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
 });
 
 export default router;
