@@ -9,23 +9,49 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const AuthStore = useAuthStore();
 const authState = AuthStore.initialState;
+// eslint-disable-next-line no-unused-vars
 const loginStatus = ref(authState.status.loggedIn);
 //validation schema
 const schema = yup.object().shape({
     email: yup.string().email('Invalid email').required('Email is required'),
     password: yup.string().required('Password is required').min(6, 'Password must be at least 6 characters'),
   });
+
+if(loginStatus.value){
+   router.push('/');
+}
+
 //google login 
-const handleOnSuccess = (response) => AuthStore.googlelogin(response.access_token);
+const handleOnSuccess = (response) => AuthStore.googlelogin(response.access_token).then(
+  () => {
+    // console.log(res)
+    window.location.reload();
+  }).catch((error) => {
+          console.log(error);
+          // this.errored = true;
+        })
+        .finally(() => 
+        {   
+          //  router.push('/');
+
+        });
+
+    
+
+
 const handleOnError = (errorResponse) =>  console.log("Error: ", errorResponse);
 const { isReady, login } = useTokenClient({ onSuccess: handleOnSuccess, onError: handleOnError});
 //normal login
-const Login = (values) => AuthStore.login(values);
-// redirect to home page  user if not logged in 
-if(loginStatus.value){
-  router.push('/');
-  // console.log(loginStatus.value);
-}
+const Login = (values) => AuthStore.login(values).then(
+  () => {
+    // console.log(res)
+    router.push('/');
+  },
+  (error) => {
+    console.error(error);
+  }
+);
+
 </script>
 
 <template>

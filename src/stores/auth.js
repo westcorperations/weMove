@@ -17,15 +17,36 @@ export const useAuthStore = defineStore("auth",{
       // GOOGLE LOGIN METHOD
         async googlelogin(idToken){
           const tokenjson = {idToken: idToken}
-          const response = await axios.post("/auth/google/callback",tokenjson);
-          try {
-             const Token = response.data.data.token;
+         return  await axios.post("/auth/google/callback",tokenjson).then(
+            response => {
+              const Token = response.data.data.token;
             localStorage.setItem("userToken", Token);
-          } catch (error) {
-            console.error("error logging in",error);
+            // commit("FetchSuccess",Token);
+            return Promise.resolve(Token);
+          },
+          error => {
+            // commit("FetchFailure",error);
+            return Promise.reject(error);
           }
+          );
         },
-
+           
+          
+        // fetch({ commit }) {
+        //   return ProdService.getAllProduct().then(
+        //     response => {
+        //        let result = response.data;
+        //       commit("FetchSuccess",result);
+               
+        //       return Promise.resolve(result);
+        //     },
+        //     error => {
+        //       commit("FetchFailure", error);
+        //       return Promise.reject(error);
+        //     }
+        //   );
+        // },
+      
         
         // NORMAL LOGIN ACTION
         async login(values){
@@ -37,6 +58,16 @@ export const useAuthStore = defineStore("auth",{
           } catch (error) {
             console.error("error logging in",error);
           }
+        },
+        logout(){
+          try{
+          localStorage.removeItem("userToken");
+          window.location.reload();
+          }catch(error){
+            console.error("error logging in",error);
+           
+          }
+
         },
     }
 });
