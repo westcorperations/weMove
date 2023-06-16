@@ -1,84 +1,9 @@
-<script setup>
-import HeaderComponent from '@/components/UserLayout/includes/HeaderComponent.vue';
-import { ref } from "vue";
-import { Carousel, Slide } from "vue3-carousel";
-// import {useAuthStore} from "@/stores/auth.js";
-
-import "vue3-carousel/dist/carousel.css";
-const TopBuses = [
-  {
-    id: "1",
-    image:
-      "https://drive.google.com/uc?export=download&id=1saMIKxm2w_OTmTl6tlQiTcjo8RMCst-u",
-    name: "olivia volvo",
-    features:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum nihil animi tempora officia culpa tenetur hic optio doloremque fugiat facere.",
-    href: "#",
-    rating: "4.5",
-  },
-  {
-    id: "2",
-    image:
-      "https://drive.google.com/uc?export=download&id=1Xj-YX2eaPHeBGEIQ2coWs2X8YmKmKkZ2",
-    name: "olivia volvo",
-    features:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum nihil animi tempora officia culpa tenetur hic optio doloremque fugiat facere.",
-    href: "#",
-    rating: "4.5",
-  },
-  {
-    id: "3",
-    image:
-      "https://drive.google.com/uc?export=download&id=1nO91i3qO1Zr4aYeHv2zpV-8iWcBoJdfh",
-    name: "olivia volvo",
-    features:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum nihil animi tempora officia culpa tenetur hic optio doloremque fugiat facere.",
-    href: "#",
-    rating: "4.5",
-  },
-];
-const settings = {
-  itemsToShow: 1,
-  snapAlign: "center",
-};
-
-const breakpoints = {
-  700: {
-    itemsToShow: 2,
-    snapAlign: "center",
-  },
-  1024: {
-    itemsToShow: 3,
-    snapAlign: "start",
-  },
-};
-const currentSlide = ref(0);
-// const carouselRef = ref(null)
-
-const next = () => {
-  if (currentSlide.value !== null && currentSlide.value < TopBuses.length - 1) {
-    // console.log('hi')
-    currentSlide.value++;
-    // console.log(TopBuses.length)
-  }
-};
-
-const prev = () => {
-  if (currentSlide.value > 0) {
-    currentSlide.value--;
-    // console.log(currentSlide.value);
-  }
-};
-</script>
-
 <template>
-<!-- Banner Component -->
-<HeaderComponent />
+  <!-- Banner Component -->
+  <HeaderComponent />
 
-
-<!-- Main section -->
+  <!-- Main section -->
   <main class="container my-5 px-6 mx-auto">
-    
     <!-- Section: How To -->
     <section class="mb-10 text-gray-800 text-center lg:text-left">
       <div class="flex justify-center">
@@ -232,10 +157,10 @@ const prev = () => {
     </section>
     <!-- Section: How to -->
 
-    <!-- Section: Top Buses  -->
+    <!-- Section: Top Cars  -->
     <section class="mb-32 text-gray-800 text-center lg:text-left">
       <div class="md:max-w-[700px]">
-        <h3 class="text-3xl font-bold mb-6">Best Service Car</h3>
+        <h3 class="text-3xl font-bold mb-6">All Service Car</h3>
         <p class="text-primary-50 mb-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex,
           rem?,Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, rem?
@@ -294,13 +219,14 @@ const prev = () => {
         ref="carousel"
         v-model="currentSlide"
       >
-        <Slide v-for="item in TopBuses" :key="item.id">
+        <Slide v-for="item in Cars" :key="item.id">
           <div class="md:mr-4">
             <div class="relative overflow-hidden bg-no-repeat bg-cover">
               <img
-                :src="item.image"
+                :src="imageBaseUrl + item.car_image[0].path"
                 class="w-full rounded-t-lg h-60"
                 loading="lazy"
+                alt="cars image"
               />
             </div>
             <div class="container mx-auto px-6">
@@ -309,13 +235,27 @@ const prev = () => {
                   class="grid grid-cols-1 rounded-lg shadow-xl gap-4 py-2 md:py-6 mt-[-60px] bg-[hsla(0,0%,100%,0.7)] backdrop-blur-[30px]"
                 >
                   <div class="flex flex-row px-3">
-                    <h3 class="px-3 text-gray-500 font-bold">Bus name</h3>
+                    <h3 class="px-3 text-gray-500 font-bold">Brand</h3>
+                    <h3 class="text-primary-100 font-bold">{{ item.brand }}</h3>
+                  </div>
+                  <div class="flex flex-row px-3">
+                    <h3 class="px-3 text-gray-500 font-bold">Name</h3>
                     <h3 class="text-primary-100 font-bold">{{ item.name }}</h3>
+                  </div>
+                  <div class="flex flex-row px-3">
+                    <h3 class="px-3 text-gray-500 font-bold">Model</h3>
+                    <h3 class="text-primary-100 font-bold">{{ item.model }}</h3>
+                  </div>
+                  <div class="flex flex-row px-3">
+                    <h3 class="px-3 text-gray-500 font-bold">Price/km</h3>
+                    <h3 class="text-primary-100 font-bold">
+                      &#8358;{{ item.price }}
+                    </h3>
                   </div>
                   <div class="flex flex-row px-3">
                     <h3 class="px-3 text-gray-500 font-bold">Features</h3>
                     <p class="text-gray-500 text-sm text-left">
-                      {{ item.features }}
+                      {{ item.category.desc }}
                     </p>
                   </div>
                   <div class="flex flex-row px-3">
@@ -391,54 +331,113 @@ const prev = () => {
         </Slide>
       </Carousel>
     </section>
-    <!-- Section:Top Buses -->
+    <!-- Section:Top Cars -->
 
- 
-
-<!-- Section: Newsletter -->
-<section class="mb-[-100px] relative text-gray-800 text-center lg:text-left ">
-  <div class="block rounded-lg shadow-3xl bg-white">
-    <div class="flex flex-wrap items-center">
-      <div class="grow-0 shrink-0 basis-auto hidden lg:flex lg:w-6/12 xl:w-4/12">
-        <img
-          src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-          alt="Trendy Pants and Shoes"
-          class="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg"
-        />
-      </div>
-      <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
-        <div class="px-6 py-12 md:px-12">
-          <h2 class="text-3xl font-bold mb-6">
-            Do not miss any updates.
-            <br />
-            <span class="text-primary-100">Subscribe to the newsletter</span>
-          </h2>
-          <p class="text-gray-500 mb-12">
-            We will write rarely and only high-quality content.
-          </p>
-          <div class="md:flex flex-row">
-            <input
-              type="text"
-              class="form-control block w-full px-4 py-2 mb-2 md:mb-0 md:mr-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="Enter your email"
+    <!-- Section: Newsletter -->
+    <section
+      class="mb-[-100px] relative text-gray-800 text-center lg:text-left"
+    >
+      <div class="block rounded-lg shadow-3xl bg-white">
+        <div class="flex flex-wrap items-center">
+          <div
+            class="grow-0 shrink-0 basis-auto hidden lg:flex lg:w-6/12 xl:w-4/12"
+          >
+            <img
+              src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
+              alt="Trendy Pants and Shoes"
+              class="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg"
             />
-            <button
-              type="submit"
-              class="inline-block px-7 py-3 bg-primary-100 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-              data-mdb-ripple="true"
-              data-mdb-ripple-color="light"
-            >
-              Subscribe
-            </button>
+          </div>
+          <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
+            <div class="px-6 py-12 md:px-12">
+              <h2 class="text-3xl font-bold mb-6">
+                Do not miss any updates.
+                <br />
+                <span class="text-primary-100"
+                  >Subscribe to the newsletter</span
+                >
+              </h2>
+              <p class="text-gray-500 mb-12">
+                We will write rarely and only high-quality content.
+              </p>
+              <div class="md:flex flex-row">
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 mb-2 md:mb-0 md:mr-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  placeholder="Enter your email"
+                />
+                <button
+                  type="submit"
+                  class="inline-block px-7 py-3 bg-primary-100 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- Section: Newsletter -->
-
-
+    </section>
+    <!-- Section: Newsletter -->
   </main>
   <!-- main -->
 </template>
+<script setup>
+import HeaderComponent from "@/components/UserLayout/includes/HeaderComponent.vue";
+import { ref, onMounted } from "vue";
+import { Carousel, Slide } from "vue3-carousel";
+import { useCarsStore } from "@/stores/cars.js";
+import "vue3-carousel/dist/carousel.css";
+
+const CarsStore = useCarsStore();
+// all cars
+const Cars = ref();
+// image base url
+const imageBaseUrl = "http://192.168.43.10:3001/cars/images/";
+const settings = {
+  itemsToShow: 1,
+  snapAlign: "center",
+};
+const breakpoints = {
+  700: {
+    itemsToShow: 2,
+    snapAlign: "center",
+  },
+  1024: {
+    itemsToShow: 3,
+    snapAlign: "start",
+  },
+};
+
+const currentSlide = ref(0);
+// const carouselRef = ref(null)
+const next = () => {
+  if (
+    currentSlide.value !== null &&
+    currentSlide.value < Cars.value.length - 1
+  ) {
+    // console.log('hi')
+    currentSlide.value++;
+    // console.log(Cars.value.length)
+  }
+};
+const prev = () => {
+  if (currentSlide.value > 0) {
+    currentSlide.value--;
+    // console.log(currentSlide.value);
+  }
+};
+onMounted(() => {
+  CarsStore.allCars()
+    .then(() => {
+      // console.log(response.data.data.all_cars.data);
+      Cars.value = CarsStore.getCarsData;
+      // console.log(Cars);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
+</script>
